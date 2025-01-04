@@ -1,0 +1,69 @@
+<h1 class="mb-4 text-center text-primary fw-bold">Notifications</h1>
+
+<div class="container mt-2 p-4 border rounded shadow bg-light">
+    <div class="row">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded shadow-sm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <app-listing-date-input-filter 
+                            label="DateTime" 
+                            (filterChange)="onDateFilterChange($event)">
+                        </app-listing-date-input-filter>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <app-listing-select-input-filter 
+                            [options]="selectInputOptions" 
+                            selectClass="form-select w-100 mt-2" 
+                            label="DeviceType" 
+                            (filterChange)="onSelectFilterChange($event)">
+                        </app-listing-select-input-filter>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <app-listing-radio-input-filter 
+                            [inputOptions]="radioButtonOptions" 
+                            [groupClass]="groupClass" 
+                            [hideCircle]="true" 
+                            (filterChange)="onRadioFilterChange($event)">
+                        </app-listing-radio-input-filter>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded shadow-sm">
+                <app-listing-table 
+                    [categories]="categories" 
+                    [dataObject]="dataObject" 
+                    [actionCategories]="actionCategories" 
+                    emptyMessage="No notifications found"
+                    buttonIcon="bi bi-bookmark-check">
+                </app-listing-table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <app-information-alert 
+                *ngIf="warningMessage" 
+                [message]="warningMessage" 
+                type="warning" 
+                class="alert alert-warning">
+            </app-information-alert>
+            <app-information-alert 
+                *ngIf="errorMessage" 
+                [message]="errorMessage" 
+                type="error" 
+                class="alert alert-danger">
+            </app-information-alert>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<h1 class="mb-4 text-center text-primary fw-bold">My Homes</h1>
+
+<div class="container mt-2 p-4 border rounded shadow bg-light">
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded shadow-sm">
+                <app-listing-table 
+                    [categories]="categories" 
+                    [dataObject]="dataObject"
+                    [isClickeable]="true"
+                    (rowClicked)="onRowClick($event)">
+                </app-listing-table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 d-flex justify-content-between">
+            <app-listing-button 
+                title="Previous" 
+                class="btn btn-primary" 
+                [currentOffset]="offset" 
+                [changeOffset]="-offsetChange" 
+                (changeOffsetEvent)="onChangeOffset($event)" 
+                [disabled]="offset === 0">
+            </app-listing-button>
+            <app-listing-button 
+                title="Next" 
+                class="btn btn-primary" 
+                [currentOffset]="offset" 
+                [changeOffset]="offsetChange" 
+                (changeOffsetEvent)="onChangeOffset($event)" 
+                [disabled]="!hasMoreHomes">
+            </app-listing-button>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <app-information-alert 
+                *ngIf="infoMessage" 
+                [message]="infoMessage" 
+                type="info" 
+                class="">
+            </app-information-alert>
+            <app-information-alert 
+                *ngIf="errorMessage" 
+                [message]="errorMessage" 
+                type="error" 
+                class="">
+            </app-information-alert>
+        </div>
+    </div>
+</div>

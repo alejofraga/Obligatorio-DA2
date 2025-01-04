@@ -1,0 +1,38 @@
+<div class="container mt-4 p-4 border rounded shadow bg-light" style="width: 80%;">
+    <div class="row text-center">
+        <div class="col-12">
+            <h1 class="mb-4 text-center text-primary fw-bold">Home Devices</h1>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="{{ formField.rooms.name }}" class="form-label text-muted">
+            Select a Room
+        </label>
+        <app-select
+            id="{{ formField.rooms.name }}"
+            [options]="roomsOptions"
+            [selectedValue]="listForm.controls['rooms'].value"
+            (selectedValueChange)="onRoomChange($event)"
+            [class]="formField.rooms.class + ' form-select'">
+        </app-select>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded shadow-sm">
+                <app-listing-table 
+                    [categories]="categories" 
+                    [dataObject]="dataObject" 
+                    [imageCategories]="[{ category: 'mainPhoto', alt: 'Device Image' }]">
+                </app-listing-table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <app-information-alert *ngIf="errorMessage" [message]="errorMessage" type="error"></app-information-alert>
+        </div>
+    </div>
+</div>

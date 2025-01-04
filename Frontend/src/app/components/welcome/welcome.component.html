@@ -1,0 +1,10 @@
+<div class="d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
+  <div class="text-center" style="width: 100%;">
+      <div class="message-container p-4 rounded shadow">
+          <h1 class="display-4">Welcome to the {{title}} panel!</h1>
+          <p *ngIf="hasPermissions == true" class="lead text-muted">Select one of the options on the sidebar to continue.</p>
+          <p *ngIf="hasPermissions == false" class="lead text-muted">You do not have any permission on this home.</p>
+          <img src={{imagePath}} alt="Welcome" class="img-fluid mt-4" style="max-height: 300px; border-radius: 10px;">
+      </div>
+  </div>
+</div>

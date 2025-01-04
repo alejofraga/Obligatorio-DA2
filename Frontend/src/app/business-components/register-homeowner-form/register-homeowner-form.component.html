@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div
+    class="container p-4 shadow-lg rounded bg-white"
+    style="max-width: 700px"
+  >
+    <h1 class="text-center mb-2 text-primary">Register as a Home Owner</h1>
+
+    <app-form [form]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <div class="form-group mb-3">
+        <label for="{{ formField.name.name }}" class="form-label text-muted"
+          >First Name</label
+        >
+        <app-form-input
+          type="text"
+          id="{{ formField.name.name }}"
+          placeholder="John"
+          [name]="formField.name.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.name.class + ' form-control'"
+        >
+        </app-form-input>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="{{ formField.lastname.name }}" class="form-label text-muted"
+          >Last Name</label
+        >
+        <app-form-input
+          type="text"
+          id="{{ formField.lastname.name }}"
+          placeholder="Doe"
+          [name]="formField.lastname.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.lastname.class + ' form-control'"
+        >
+        </app-form-input>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="{{ formField.email.name }}" class="form-label text-muted"
+          >Email</label
+        >
+        <app-form-input
+          type="text"
+          id="{{ formField.email.name }}"
+          placeholder="email@example.com"
+          [name]="formField.email.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.email.class + ' form-control'"
+        >
+        </app-form-input>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="{{ formField.password.name }}" class="form-label text-muted"
+          >Password</label
+        >
+        <app-form-input
+          type="password"
+          id="{{ formField.password.name }}"
+          placeholder="*****"
+          [name]="formField.password.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.password.class + ' form-control'"
+        >
+        </app-form-input>
+      </div>
+
+      <div class="form-group mb-4">
+        <label
+          for="{{ formField.profilePicture.name }}"
+          class="form-label text-muted"
+          >Profile Picture</label
+        >
+        <app-form-input
+          type="text"
+          id="{{ formField.profilePicture.name }}"
+          placeholder="https://example"
+          [name]="formField.profilePicture.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.profilePicture.class + ' form-control'"
+        >
+        </app-form-input>
+      </div>
+
+      <div class="d-grid gap-2 justify-content-center w-100">
+        <app-form-button
+          [class]="'w-100 btn btn-primary btn-lg'"
+          title="Register"
+        >
+        </app-form-button>
+        <app-button
+          [class]="'w-100 btn btn-outline-secondary btn-lg'"
+          [onClick]="loginOption"
+          title="Login"
+        >
+        </app-button>
+      </div>
+      <div class="col-12 mt-3">
+      <app-information-alert
+        *ngIf="successMessage"
+        [message]="successMessage"
+        type="success"
+      ></app-information-alert>
+
+      <app-information-alert
+        *ngIf="errorMessage"
+        [message]="errorMessage"
+        type="error"
+      ></app-information-alert>
+    </div>
+    </app-form>
+  </div>
+</div>

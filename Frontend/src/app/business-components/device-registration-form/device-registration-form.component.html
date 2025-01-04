@@ -1,0 +1,146 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 800px">
+    <h1 class="text-center mb-4 text-primary">Device Registration</h1>
+
+    <app-form [form]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" class="w-100">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="{{ formField.name.name }}" class="form-label text-muted">Device Name</label>
+          <app-form-input
+            type="text"
+            id="{{ formField.name.name }}"
+            placeholder="Device Name"
+            [name]="formField.name.name"
+            [form]="registerForm"
+            [formField]="formField"
+            [class]="formField.name.class"
+          ></app-form-input>
+        </div>
+
+        <div class="col-md-6">
+          <label for="{{ formField.description.name }}" class="form-label text-muted">Description</label>
+          <app-form-input
+            type="text"
+            id="{{ formField.description.name }}"
+            placeholder="Description"
+            [name]="formField.description.name"
+            [form]="registerForm"
+            [formField]="formField"
+            [class]="formField.description.class"
+          ></app-form-input>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="{{ formField.modelNumber.name }}" class="form-label text-muted">Model Number</label>
+          <app-form-input
+            type="text"
+            id="{{ formField.modelNumber.name }}"
+            placeholder="Model Number"
+            [name]="formField.modelNumber.name"
+            [form]="registerForm"
+            [formField]="formField"
+            [class]="formField.modelNumber.class"
+          ></app-form-input>
+        </div>
+
+        <div class="col-md-6">
+          <label for="{{ formField.photos.name }}" class="form-label text-muted">Photos</label>
+          <app-form-input
+            type="text"
+            id="{{ formField.photos.name }}"
+            placeholder="Enter urls separated by commas"
+            [name]="formField.photos.name"
+            [form]="registerForm"
+            [formField]="formField"
+            [class]="formField.photos.class"
+            (change)="onPhotoUrlsInput($event)"
+          ></app-form-input>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <app-select
+          [label]="formField.deviceType.name"
+          [options]="formField.deviceType.options"
+          [selectedValue]="formField.deviceType.selectedValue"
+          [class]="formField.deviceType.class"
+          (selectedValueChange)="onSelectChange($event)"
+        ></app-select>
+      </div>
+
+      <div
+        *ngIf="registerForm.get(formField.deviceType.name)?.value === 'Camera'"
+      >
+        <app-information-alert
+          *ngIf="registerForm.errors?.['outdoorIndoorRequired']"
+          message="At least one option between Indoor and Outdoor must be selected."
+          type="warning"
+          class="mt-3"
+        ></app-information-alert>
+        <div class="d-flex gap-3 mb-3">
+          <app-checkbox
+            [label]="formField.isOutdoor.name"
+            [checked]="registerForm.get(formField.isOutdoor.name)?.value"
+            (checkedChange)="
+              registerForm.get(formField.isOutdoor.name)?.setValue($event)
+            "
+          ></app-checkbox>
+
+          <app-checkbox
+            [label]="formField.isIndoor.name"
+            [checked]="registerForm.get(formField.isIndoor.name)?.value"
+            (checkedChange)="
+              registerForm.get(formField.isIndoor.name)?.setValue($event)
+            "
+          ></app-checkbox>
+        </div>
+
+        <app-checkbox
+          [label]="formField.HasPersonDetection.name"
+          [checked]="
+            registerForm.get(formField.HasPersonDetection.name)?.value
+          "
+          (checkedChange)="
+            registerForm
+              .get(formField.HasPersonDetection.name)
+              ?.setValue($event)
+          "
+          class="mb-3"
+        ></app-checkbox>
+
+        <app-checkbox
+          [label]="formField.HasMovementDetection.name"
+          [checked]="
+            registerForm.get(formField.HasMovementDetection.name)?.value
+          "
+          (checkedChange)="
+            registerForm
+              .get(formField.HasMovementDetection.name)
+              ?.setValue($event)
+          "
+          class="mb-3"
+        ></app-checkbox>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <app-form-button [class]="'btn btn-primary btn-lg w-100'" title="Register"></app-form-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="successMessage"
+          [message]="successMessage"
+          type="success"
+        ></app-information-alert>
+
+        <app-information-alert
+          *ngIf="errorMessage"
+          [message]="errorMessage"
+          type="error"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>
+</div>

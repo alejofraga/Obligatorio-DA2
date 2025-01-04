@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 600px">
+    <h1 class="text-center mt-4 text-primary">{{ name }}</h1>
+
+    <app-form [form]="importerForm" (ngSubmit)="onSubmit($event)">
+      <div class="w-100 mt-4">
+        <div class="row w-100 justify-content-center">
+          <div class="col-lg-8">
+            <div *ngFor="let param of parameters">
+              <app-form-input
+                [type]="'text'"
+                [label]="param.name"
+                [placeholder]="param.name"
+                [form]="importerForm"
+                [name]="param.name"
+                [formField]="param"
+                class=""
+              ></app-form-input>
+            </div>
+
+            <div class="text-center mt-4 mb-4 d-grid gap-2">
+              <app-form-button title="Import" class="btn btn-primary btn-lg w-100"></app-form-button>
+            </div>
+
+            <app-information-alert
+              *ngIf="SuccessMessage"
+              [message]="SuccessMessage"
+              type="success"
+            ></app-information-alert>
+
+            <app-information-alert
+              *ngIf="ErrorMessage"
+              [message]="ErrorMessage"
+              type="error"
+            ></app-information-alert>
+          </div>
+        </div>
+      </div>
+    </app-form>
+  </div>
+</div>

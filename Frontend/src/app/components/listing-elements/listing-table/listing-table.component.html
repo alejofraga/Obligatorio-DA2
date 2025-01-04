@@ -1,0 +1,74 @@
+<div class="table-responsive">
+    <table class="table table-bordered" [ngClass]="{'table-hover': isClickeable}">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 50px;" class="text-center">#</th>
+                <th *ngFor="let category of categories" scope="col" style="width: 150px;" class="text-center">{{ category.alias }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="data && data.length > 0; else noData">
+                <ng-container *ngFor="let item of data; let i = index">
+                    <tr *ngIf="isClickeable === true" style="cursor: pointer;" (click)="onRowClick(item)">
+                        <th scope="row" class="text-center">{{ i + 1 }}</th>
+                        <td *ngFor="let category of categories" class="text-center">
+                            <ng-container *ngIf="isImageCategory(category); else actionCategory">
+                                <img [src]="getImageUrl(item, category)" [alt]="getAltText(category)"
+                                    style="width: 100px; height: auto; display: block; margin-left: auto; margin-right: auto;">
+                            </ng-container>
+
+                            <ng-template #actionCategory>
+                                <ng-container *ngIf="isActionCategory(category); else defaultCell">
+                                    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                                        <ng-container *ngIf="showActionWhen(item, category)">
+                                            <app-button [class]="getActionClass(category)"
+                                                [onClick]="getActionOnClick(item, category)"
+                                                [title]="getActionTitle(category)">
+                                            </app-button>
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                            </ng-template>
+
+                            <ng-template #defaultCell>{{ item[category.name] }}</ng-template>
+                        </td>
+                    </tr>
+                    <tr *ngIf="isClickeable === false">
+                        <th scope="row" class="text-center">{{ i + 1 }}</th>
+                        <td *ngFor="let category of categories" class="text-center">
+                            <ng-container *ngIf="isImageCategory(category); else actionCategory">
+                                <img [src]="getImageUrl(item, category)" [alt]="getAltText(category)"
+                                    style="width: 100px; height: auto; display: block; margin-left: auto; margin-right: auto;">
+                            </ng-container>
+
+                            <ng-template #actionCategory>
+                                <ng-container *ngIf="isActionCategory(category); else defaultCell">
+                                    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                                        <ng-container *ngIf="showActionWhen(item, category)">
+                                            <app-button [class]="getActionClass(category)"
+                                                [onClick]="getActionOnClick(item, category)"
+                                                [title]="getActionTitle(category)"
+                                                [icon]="buttonIcon">
+                                            </app-button>
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                            </ng-template>
+
+                            <ng-template #defaultCell>
+                                <ng-container *ngIf="item[category.name] === true">Yes</ng-container>
+                                <ng-container *ngIf="item[category.name] === false">No</ng-container>
+                                <ng-container *ngIf="item[category.name] !== true && item[category.name] !== false">{{ item[category.name] }}</ng-container>
+                            </ng-template>
+                        </td>
+                    </tr>
+                </ng-container>
+            </ng-container>
+            <ng-template #noData>
+                <tr>
+                    <td [attr.colspan]="categories.length + 1" class="text-center">{{emptyMessage}}</td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+</div>

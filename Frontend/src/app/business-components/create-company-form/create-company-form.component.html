@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 600px">
+    <h1 class="text-center mb-4 text-primary">Create a Company</h1>
+
+    <app-form [form]="createCompanyForm" (ngSubmit)="onSubmit(createCompanyForm.value)" class="w-100">
+      <div class="mb-3">
+        <label for="{{ formField.name.name }}" class="form-label text-muted">Name</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.name.name }}"
+          placeholder="Example Company"
+          [name]="formField.name.name"
+          [form]="createCompanyForm"
+          [formField]="formField"
+          [class]="formField.name.class"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ formField.rut.name }}" class="form-label text-muted">Rut</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.rut.name }}"
+          placeholder="123456789101"
+          [name]="formField.rut.name"
+          [form]="createCompanyForm"
+          [formField]="formField"
+          [class]="formField.rut.class"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ formField.logoUrl.name }}" class="form-label text-muted">Logo Url</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.logoUrl.name }}"
+          placeholder="https://example.com/logo.png"
+          [name]="formField.logoUrl.name"
+          [form]="createCompanyForm"
+          [formField]="formField"
+          [class]="formField.logoUrl.class"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <app-select
+          [label]="formField.ModelValidators.name"
+          [options]="formField.ModelValidators.options"
+          [selectedValue]="formField.ModelValidators.selectedValue"
+          [class]="formField.ModelValidators.class"
+          (selectedValueChange)="onSelectChange($event)"
+        ></app-select>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <app-form-button [class]="'btn btn-primary btn-lg w-100'" title="Create"></app-form-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="successMessage"
+          [message]="successMessage"
+          type="success"
+        ></app-information-alert>
+
+        <app-information-alert
+          *ngIf="errorMessage"
+          [message]="errorMessage"
+          type="error"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>
+</div>

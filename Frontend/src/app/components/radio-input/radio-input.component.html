@@ -1,0 +1,17 @@
+<div [class]="groupClass + ' d-flex gap-2 flex-wrap'">
+    <label 
+        *ngFor="let option of inputOptions" 
+        [class]="'btn btn-outline-primary' + (option.checked ? ' active' : '')"
+        style="border-radius: 20px; padding: 0.5rem 1rem; text-align: center; cursor: pointer;"
+    >
+        <input 
+            type="radio" 
+            [name]="option.name" 
+            [checked]="option.checked" 
+            autocomplete="off" 
+            [style.display]="hideCircle ? 'none' : 'inline'" 
+            (change)="onValueChange(option)"
+        >
+        {{ option.title }}
+    </label>
+</div>

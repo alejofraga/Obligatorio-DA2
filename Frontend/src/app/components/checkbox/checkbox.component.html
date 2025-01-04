@@ -1,0 +1,11 @@
+<div class="form-group">
+  <input
+    type="checkbox"
+    [id]="id"
+    [checked]="checked"
+    [disabled]="disabled"
+    (change)="onCheckedChange($event)"
+    class="form-check-input"
+  />
+  <label [for]="id" class="form-label ms-2">{{ label }}</label>
+</div>

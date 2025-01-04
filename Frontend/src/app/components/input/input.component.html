@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label *ngIf="label">{{ label }}</label>
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="type !== 'file' ? value : null"
+    [class]="'form-control ' + (class || '')"
+    [attr.multiple]="multiple ? true : null"
+    (input)="onValueChange($event)"
+    (change)="onValueChange($event)"
+  />
+</div>

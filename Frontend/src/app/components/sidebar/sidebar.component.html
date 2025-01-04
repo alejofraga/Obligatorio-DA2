@@ -1,0 +1,44 @@
+<nav
+  class="d-flex flex-column p-3 bg-light"
+  style="
+    position: fixed;
+    top: 10; left: 0;
+    width: 280px; height: 100vh; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    font-family: 'Poppins', sans-serif;"
+>
+  <ul class="nav flex-column">
+    <li *ngFor="let item of items" class="nav-item mb-4">
+      <h6
+        class="fw-bold text-uppercase text-primary"
+        style="letter-spacing: 0.5px; font-size: 0.9rem;"
+      >
+        {{ item.title }}
+      </h6>
+      <ul class="nav flex-column ms-3">
+        <li *ngFor="let operation of item.operations" class="nav-item mb-2">
+          <a
+            class="nav-link d-flex align-items-center gap-2"
+            [routerLink]="[getRouterLink(operation)]"
+            routerLinkActive="active"
+            style="
+              color: #495057;
+              text-decoration: none;
+              padding: 8px 10px;
+              border-radius: 6px;
+              transition: all 0.3s ease;
+              font-size: 0.9rem;
+            "
+            routerLinkActive="bg-primary text-white"
+          >
+            <i
+              class="bi bi-dot"
+              style="font-size: 1.2rem; color: #6c757d;"
+            ></i>
+            {{ operation }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

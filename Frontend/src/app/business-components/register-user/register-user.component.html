@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 600px">
+    <h1 class="text-center mb-4 text-primary" *ngIf="role === 'Admin'">
+      Register an Admin
+    </h1>
+    <h1 class="text-center mb-4 text-primary" *ngIf="role === 'CompanyOwner'">
+      Register a Company Owner
+    </h1>
+
+    <app-form [form]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" class="w-100">
+      <div class="mb-3">
+        <label for="{{ formField.name.name }}" class="form-label text-muted">First Name</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.name.name }}"
+          placeholder="John"
+          [name]="formField.name.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.name.class"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ formField.lastname.name }}" class="form-label text-muted">Last Name</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.lastname.name }}"
+          placeholder="Doe"
+          [name]="formField.lastname.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.lastname.class"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ formField.email.name }}" class="form-label text-muted">Email</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.email.name }}"
+          placeholder="email@example.com"
+          [name]="formField.email.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.email.class"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ formField.password.name }}" class="form-label text-muted">Password</label>
+        <app-form-input
+          type="password"
+          id="{{ formField.password.name }}"
+          placeholder="*****"
+          [name]="formField.password.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.password.class"
+        ></app-form-input>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <app-form-button
+          [class]="'btn btn-primary btn-lg w-100'"
+          title="Register"
+        ></app-form-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="SuccessMessage"
+          [message]="SuccessMessage"
+          type="success"
+        ></app-information-alert>
+        <app-information-alert
+          *ngIf="ErrorMessage"
+          [message]="ErrorMessage"
+          type="error"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>
+</div>

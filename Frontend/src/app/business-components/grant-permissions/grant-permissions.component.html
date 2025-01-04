@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center">
+    <div class="container p-4 shadow rounded bg-white" style="max-width: 700px">
+      <h1 class="text-center mb-4 text-primary">Grant Permissions</h1>
+  
+      <app-form [form]="grantPermissionsForm" (ngSubmit)="onSubmit()" class="w-100">
+        <div class="mb-3">
+          <app-select
+            label="Members"
+            [options]="members"
+            [selectedValue]="grantPermissionsForm.get('members')?.value"
+            (selectedValueChange)="onSelectChange($event)"
+            [class]="'form-select'"
+          ></app-select>
+        </div>
+  
+        <div class="row w-70 justify-content-center">
+          <div *ngFor="let permission of homePermissions" class="mt-3 col-lg-4">
+            <app-checkbox
+              [label]="camelCaseToSpaces(permission)"
+              [checked]="grantPermissionsForm.get(permission)?.value"
+              (checkedChange)="grantPermissionsForm.get(permission)?.setValue($event)"
+              [disabled]="grantPermissionsForm.get(permission)?.disabled ?? false"
+              [class]=""
+            ></app-checkbox>
+          </div>
+        </div>
+  
+        <div class="mt-4 text-center">
+          <app-form-button title="Submit" class="btn btn-primary w-100"></app-form-button>
+        </div>
+      </app-form>
+    </div>
+  </div>
+  

@@ -1,0 +1,26 @@
+{
+  "dispositivos": [
+    {
+      "id": "60ba44c4-bf60-42ed-9341-71ca3d85e571",
+      "tipo": "camera",
+      "nombre": "Smart D204",
+      "modelo": "LLT55gsadljdaklsjdlksajdklasjahslkdhaskldjklasdjkasljkldajskdlsajkladsjlajdslksajdklasjdklsajkldajslkdsaj5",
+      "fotos": [
+        {
+          "path": "https://http2.mlstatic.com/D_NQ_NP_2X_710567-MLU74978946520_032024-F.webp",
+          "es_principal": false
+        },
+        {
+          "path": "esta tiene q ir primero",
+          "es_principal": true
+        },
+        {
+          "path": "https://http2.mlstatic.com/D_NQ_NP_2X_659683-MLU75119028653_032024-F.webp",
+          "es_principal": false
+        }
+      ],
+      "person_detection": true,
+      "movement_detection": true
+    }
+  ]
+}

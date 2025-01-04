@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="main-page" style="height: 100vh;">
+  <app-card
+    *ngIf="userCards.includes('Admin')"
+    [description]="adminDescription"
+    [buttonText]="'Go to admin page'"
+    [buttonAction]="goToAdmin"
+    [imageUrl]="adminImageUrl"
+    [title]="'Admin'"
+  >
+  </app-card>
+  <app-card
+    *ngIf="userCards.includes('CompanyOwner')"
+    [description]="companyOwnerDescription"
+    [buttonText]="'Go to company owner page'"
+    [buttonAction]="goToCompanyOwner"
+    [imageUrl]="companyOwnerImageUrl"
+    [title]="'Company Owner'"
+  >
+  </app-card>
+  <app-card
+    *ngIf="userCards.includes('HomeOwner')"
+    [description]="homeOwnerDescription"
+    [buttonText]="'Go to home owner page'"
+    [buttonAction]="goToHomeOwner"
+    [imageUrl]="homeOwnerImageUrl"
+    [title]="'Home Owner'"
+  >
+  </app-card>
+  <app-card
+    *ngIf="userCards.includes('join-home-owner')"
+    [description]="joinHomeOwnerDescription"
+    [buttonText]="'I want to become a home owner'"
+    [buttonAction]="goToJoinHomeOwner"
+    [imageUrl]="joinHomeOwnerImageUrl"
+    [title]="'Convert to Home Owner'"
+  >
+  </app-card>
+</div>

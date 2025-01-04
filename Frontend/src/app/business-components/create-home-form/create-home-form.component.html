@@ -1,0 +1,113 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 600px">
+    <h1 class="text-center mb-4 text-primary">Register your home</h1>
+
+    <app-form [form]="homeCreation" (ngSubmit)="onSubmit(homeCreation.value)" class="w-100">
+      <div class="row">
+        <!-- Primera columna -->
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="{{ formField.name.name }}" class="form-label text-muted">Alias</label>
+            <app-form-input
+              type="text"
+              id="{{ formField.name.name }}"
+              placeholder="Summer House"
+              [name]="formField.name.name"
+              [form]="homeCreation"
+              [formField]="formField"
+              [class]="formField.name.class"
+            ></app-form-input>
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ formField.address.name }}" class="form-label text-muted">Address</label>
+            <app-form-input
+              type="text"
+              id="{{ formField.address.name }}"
+              placeholder="Punta del Este"
+              [name]="formField.address.name"
+              [form]="homeCreation"
+              [formField]="formField"
+              [class]="formField.address.class"
+            ></app-form-input>
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ formField.doorNumber.name }}" class="form-label text-muted">Door number</label>
+            <app-form-input
+              type="number"
+              id="{{ formField.doorNumber.name }}"
+              placeholder="999"
+              [name]="formField.doorNumber.name"
+              [form]="homeCreation"
+              [formField]="formField"
+              [class]="formField.doorNumber.class"
+            ></app-form-input>
+          </div>
+        </div>
+
+        <!-- Segunda columna -->
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="{{ formField.latitude.name }}" class="form-label text-muted">Latitude</label>
+            <app-form-input
+              type="number"
+              id="{{ formField.latitude.name }}"
+              placeholder="0"
+              [name]="formField.latitude.name"
+              [form]="homeCreation"
+              [formField]="formField"
+              [class]="formField.latitude.class"
+            ></app-form-input>
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ formField.longitude.name }}" class="form-label text-muted">Longitude</label>
+            <app-form-input
+              type="number"
+              id="{{ formField.longitude.name }}"
+              placeholder="0"
+              [name]="formField.longitude.name"
+              [form]="homeCreation"
+              [formField]="formField"
+              [class]="formField.longitude.class"
+            ></app-form-input>
+          </div>
+
+          <div class="mb-3">
+            <label for="{{ formField.memberCount.name }}" class="form-label text-muted">Member count</label>
+            <app-form-input
+              type="number"
+              id="{{ formField.memberCount.name }}"
+              placeholder="10"
+              [name]="formField.memberCount.name"
+              [form]="homeCreation"
+              [formField]="formField"
+              [class]="formField.memberCount.class"
+            ></app-form-input>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <app-form-button
+          [class]="'btn btn-primary btn-lg w-100'"
+          title="Register"
+        ></app-form-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="successMessage"
+          [message]="successMessage"
+          type="success"
+        ></app-information-alert>
+        <app-information-alert
+          *ngIf="errorMessage"
+          [message]="errorMessage"
+          type="error"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>
+</div>

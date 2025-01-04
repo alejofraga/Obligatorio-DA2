@@ -1,0 +1,12 @@
+<div class="form-group">
+  <app-input
+    [class]="class"
+    [type]="type"
+    [label]="label"
+    [placeholder]="placeholder"
+    [(value)]="value"
+    [multiple]="multiple"
+    (change)="onChange($event)"
+  ></app-input>
+  <small class="text-danger" *ngIf="error">{{ error }}</small>
+</div>

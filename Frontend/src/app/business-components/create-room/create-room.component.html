@@ -1,0 +1,54 @@
+
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 700px">
+    <h1 class="text-center mb-4 text-primary">Group Devices by Room</h1>
+
+    <app-form [form]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" class="w-100">
+      <div class="mb-3">
+        <label for="{{ formField.name.name }}" class="form-label text-muted">Room Name</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.name.name }}"
+          placeholder="Hall"
+          [name]="formField.name.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.name.class + ' form-control'"
+        ></app-form-input>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ formField.hardwares.name }}" class="form-label text-muted">Select Hardwares</label>
+        <app-select
+          id="{{ formField.hardwares.name }}"
+          [options]="hardwareOptions"
+          [isMultiple]="true"
+          [selectedValue]="registerForm.controls['hardwares'].value"
+          (selectedValueChange)="onHardwareChange($event)"
+          [class]="formField.hardwares.class + ' form-select'"
+        ></app-select>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <button type="submit" class="w-100 btn btn-primary btn-lg mb-3">Register</button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="SuccessMessage"
+          [message]="SuccessMessage"
+          type="success"
+        ></app-information-alert>
+
+        <app-information-alert
+          *ngIf="ErrorMessage"
+          [message]="ErrorMessage"
+          type="error"
+        ></app-information-alert>
+
+        <app-information-alert
+          [message]="'Note that the above devices do not belong to any room'"
+          type="info"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>

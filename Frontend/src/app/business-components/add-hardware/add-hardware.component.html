@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 700px">
+    <h1 class="text-center mb-4 text-primary">Add Device</h1>
+
+    <app-form [form]="addHardwareForm" (ngSubmit)="onSubmit(addHardwareForm.value)" class="w-100">
+      <div class="mb-3">
+        <label for="{{ formField.modelNumber.name }}" class="form-label text-muted">Model Number</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.modelNumber.name }}"
+          placeholder=""
+          [name]="formField.modelNumber.name"
+          [form]="addHardwareForm"
+          [formField]="formField"
+          [class]="formField.modelNumber.class + ' form-control'"
+        ></app-form-input>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <app-form-button [class]="'btn btn-primary btn-lg w-100'" title="Add"></app-form-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="successMessage"
+          [message]="successMessage"
+          type="success"
+        ></app-information-alert>
+
+        <app-information-alert
+          *ngIf="errorMessage"
+          [message]="errorMessage"
+          type="error"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>
+</div>

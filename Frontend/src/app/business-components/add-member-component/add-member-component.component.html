@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="container p-5 shadow rounded bg-white" style="max-width: 600px">
+    <h1 class="text-center mb-4 text-primary">Add Member</h1>
+
+    <app-form [form]="addMemberForm" (ngSubmit)="onSubmit(addMemberForm.value)" class="w-100">
+      <div class="mb-3">
+        <label for="{{ formField.email.name }}" class="form-label text-muted">Email</label>
+        <app-form-input
+          type="text"
+          id="{{ formField.email.name }}"
+          placeholder="example@smarthome.com"
+          [name]="formField.email.name"
+          [form]="addMemberForm"
+          [formField]="formField"
+          [class]="formField.email.class"
+        ></app-form-input>
+      </div>
+
+      <div class="text-center mt-4 d-grid gap-2">
+        <app-form-button [class]="'btn btn-primary btn-lg w-100'" title="Create"></app-form-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <app-information-alert
+          *ngIf="successMessage"
+          [message]="successMessage"
+          type="success"
+        ></app-information-alert>
+
+        <app-information-alert
+          *ngIf="errorMessage"
+          [message]="errorMessage"
+          type="error"
+        ></app-information-alert>
+      </div>
+    </app-form>
+  </div>
+</div>

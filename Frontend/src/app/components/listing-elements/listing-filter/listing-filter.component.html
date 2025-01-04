@@ -1,0 +1,9 @@
+<div *ngFor="let option of filterOptions" class="mb-3">
+<app-input
+
+  [label]="capitalizeFirstLetter(option)"
+  (valueChange)="onFilterValueChange(option, $event)"
+  placeholder=""
+  class=""
+/>
+</div>

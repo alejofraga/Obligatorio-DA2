@@ -1,0 +1,74 @@
+<h1 class="mb-4 text-center text-primary fw-bold">Devices</h1>
+
+<div class="container mt-2 p-4 border rounded shadow bg-light">
+    <div class="row">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded shadow-sm">
+                <div class="row">
+                    <div class="col-6">
+                        <app-listing-filter 
+                            [filterOptions]="options.slice(0, 2)" 
+                            (filterChange)="onFilterChange($event)">
+                        </app-listing-filter>
+                    </div>
+                    <div class="col-6">
+                        <app-listing-filter 
+                            [filterOptions]="options.slice(2)" 
+                            (filterChange)="onFilterChange($event)">
+                        </app-listing-filter>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="bg-white p-3 rounded shadow-sm">
+                <app-listing-table 
+                    [categories]="categories" 
+                    [dataObject]="dataObject" 
+                    [imageCategories]="[{ category: 'mainPhoto', alt: 'Device Image' }]">
+                </app-listing-table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 d-flex justify-content-between">
+            <app-listing-button 
+                title="Previous" 
+                class="btn btn-primary" 
+                [currentOffset]="offset" 
+                [changeOffset]="-offsetChange" 
+                (changeOffsetEvent)="onChangeOffset($event)" 
+                [disabled]="offset === 0">
+            </app-listing-button>
+            <app-listing-button 
+                title="Next" 
+                class="btn btn-primary" 
+                [currentOffset]="offset" 
+                [changeOffset]="offsetChange" 
+                (changeOffsetEvent)="onChangeOffset($event)" 
+                [disabled]="!hasMoreUsers">
+            </app-listing-button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <app-information-alert 
+                *ngIf="warningMessage" 
+                [message]="warningMessage" 
+                type="warning" 
+                class="alert alert-warning">
+            </app-information-alert>
+            <app-information-alert 
+                *ngIf="errorMessage" 
+                [message]="errorMessage" 
+                type="error" 
+                class="">
+            </app-information-alert>
+        </div>
+    </div>
+</div>

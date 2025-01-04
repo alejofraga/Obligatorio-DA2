@@ -1,0 +1,44 @@
+  <div
+    class="container p-4 shadow-lg rounded bg-white"
+    style="max-width: 700px"
+  >
+    <h1 class="text-center mb-2 text-primary">Change home name</h1>
+
+    <app-form [form]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+
+      <div class="form-group mb-3">
+        <label for="{{ formField.name.name }}" class="form-label text-muted"
+          >New home name</label
+        >
+        <app-form-input
+          type="text"
+          id="{{ formField.name.name }}"
+          placeholder="Winter Home"
+          [name]="formField.name.name"
+          [form]="registerForm"
+          [formField]="formField"
+          [class]="formField.name.class"
+        >
+        </app-form-input>
+      </div>
+
+      <button type="submit" class="w-100 btn btn-primary btn-lg mb-3">
+        Register
+      </button>
+
+      <app-information-alert
+        *ngIf="SuccessMessage"
+        [message]="SuccessMessage"
+        type="success"
+      ></app-information-alert>
+      <app-information-alert
+        *ngIf="ErrorMessage"
+        [message]="ErrorMessage"
+        type="error"
+      ></app-information-alert>
+      <app-information-alert
+        [message]="'Note that the above devices do not belong to any room'"
+        type="info"
+      ></app-information-alert>
+    </app-form>
+  </div>
